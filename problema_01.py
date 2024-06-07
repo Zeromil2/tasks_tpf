@@ -41,18 +41,21 @@ def consultar_cep(cep):
             "estado": "indisponível"
         }
 
-# Consultar todos os CEPs e coletar os dados
+
+def main():
+    # Consultar todos os CEPs e coletar os dados
+    for cep in ceps:
+        endereco = consultar_cep(cep)
+        enderecos.append(endereco)
+
+    # Criar um DataFrame com os dados coletados
+    df = pd.DataFrame(enderecos)
+
+    # Salvar os dados em um arquivo CSV
+    df.to_csv("enderecos.csv", index=False)
+
+    print("Dados salvos em enderecos.csv")
+    print(df)
 
 
-for cep in ceps:
-    endereco = consultar_cep(cep)
-    enderecos.append(endereco)
-
-# Criar um DataFrame com os dados coletados
-df = pd.DataFrame(enderecos)
-
-# Salvar os dados em um arquivo CSV
-df.to_csv("enderecos.csv", index=False)
-
-print("Dados salvos em enderecos.csv")
-print(df)
+main()

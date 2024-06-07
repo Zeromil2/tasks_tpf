@@ -30,17 +30,21 @@ def maior_sequencia(lista_sequencia):
     return max_valor, max_contagem
 
 
-try:
-    with open(ROOT_PATH / "medicoes.txt", "r") as arquivo:
-        tamanho_lista = arquivo.readline()
-        lista_medicoes = [medicao for medicao in arquivo.readline().split(', ')]
+def main():
+    try:
+        with open(ROOT_PATH / "medicoes.txt", "r") as arquivo:
+            tamanho_lista = arquivo.readline()
+            lista_medicoes = [medicao for medicao in arquivo.readline().split(', ')]
 
-        medicao_comparada = lista_medicoes[0]  # para iniciar comparando com o primeiro item da lista
+            medicao_comparada = lista_medicoes[0]  # para iniciar comparando com o primeiro item da lista
 
-        valor, contagem = maior_sequencia(lista_medicoes)
+            valor, contagem = maior_sequencia(lista_medicoes)
 
-        print(f"{contagem} medições de {valor}")
+            print(f"{contagem} medições de {valor}")
 
 
-except IOError as exc:
-    print(f"Erro ao abrir o arquivo {exc}")
+    except IOError as exc:
+        print(f"Erro ao abrir o arquivo {exc}")
+
+
+main()
